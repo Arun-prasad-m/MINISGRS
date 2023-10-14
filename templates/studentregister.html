@@ -1,0 +1,188 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+              <form method="POST" onsubmit ="return validateForm()" action ="regstudent">
+              {% csrf_token %}
+                <div class="row">
+                  
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="lastName">Name</label>
+                      <input type="text" id="fname" class="form-control form-control-lg" name="st_name" />
+                     <span id = "blankMsg" style="color:red"> </span>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="emailAddress">Email</label>
+                      <input type="email" id="emailAddress" class="form-control form-control-lg" name="st_email" required />
+                      
+                    </div>
+  
+                  </div>
+                </div>
+  
+            
+  
+                <div class="row">
+                  
+                  <div class="col-md-12 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">Department</label>
+                      <select  class="form-control form-control-lg" required name="st_department" />
+					  <option>--select--</option>
+					  {% for i in result %}
+					  <option value="{{i.department}}">{{i.department}}</option>
+					  {% endfor %}
+                      </select>
+                      
+                    </div>
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">Semester</label>
+                                            <select  class="form-control form-control-lg" required name="st_semester" />
+					  <option>--select--</option>
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5">5</option>
+					  <option value="6">6</option>
+            <option value="7">7</option>
+					  <option value="8">8</option>
+
+                      </select>
+                    </div>
+  
+                  </div>
+                  
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">PhoneNumber</label>
+                      <input type="tel" id="phoneNumber" pattern="[6789][0-9]{9}" class="form-control form-control-lg" name="st_phone" required>
+                      
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">Father's Name</label>
+                      <input type="text" id="phoneNumber" class="form-control form-control-lg" name="fathername" required>
+                     
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">Password</label>
+                      <input type="password" id="pswd1" class="form-control form-control-lg" name="st_password" required>
+<span id = "message1" style="color:red"> </span> 
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="phoneNumber">Confirm Password</label>
+                      <input type="password" id="pswd2" class="form-control form-control-lg" name="st_cpassword" required>
+                      <span id = "message2" style="color:red"> </span> 
+                    </div>
+  
+                  </div>
+
+                </div>
+  
+               
+  
+                <div class="mt-4 pt-2">
+                  <input class="btn btn-primary btn-lg" type="submit" value="Register"  name="submit"/>
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <br>
+  <br>
+  <br>
+  <br><br><br><br><br><br><br><br>
+<script>  
+function validateForm() {  
+    //collect form data in JavaScript variables  
+    var pw1 = document.getElementById("pswd1").value;  
+    var pw2 = document.getElementById("pswd2").value;  
+    var name1 = document.getElementById("fname").value;  
+      
+    //check empty first name field  
+    if(name1 == "") {  
+      document.getElementById("blankMsg").innerHTML = "**Fill the first name";  
+      return false;  
+    }  
+      
+    //character data validation  
+    if(!isNaN(name1)){  
+      document.getElementById("blankMsg").innerHTML = "**Only characters are allowed";  
+      return false;  
+    }  
+  
+   //character data validation  
+    
+    
+    //check empty password field  
+    if(pw1 == "") {  
+      document.getElementById("message1").innerHTML = "**Fill the password please!";  
+      return false;  
+    }  
+    
+    //check empty confirm password field  
+    if(pw2 == "") {  
+      document.getElementById("message2").innerHTML = "**Enter the password please!";  
+      return false;  
+    }   
+     
+    //minimum password length validation  
+    if(pw1.length < 4) {  
+      document.getElementById("message1").innerHTML = "**Password length must be atleast 4characters";  
+      return false;  
+    }  
+  
+    //maximum length of password validation  
+    if(pw1.length >10) {  
+      document.getElementById("message1").innerHTML = "**Password length must not exceed 4 characters";  
+      return false;  
+    }  
+    
+    if(pw1 != pw2) {  
+      document.getElementById("message2").innerHTML = "**Passwords are not same";  
+      return false;  
+    } else {  
+      alert (" Successfully Registered ");  
+    }  
+ }  
+</script>  
+  {% endblock %}
+  {% include 'footer.html' %}
+
+   
+
+
+

@@ -1,0 +1,50 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5 mb-5">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="min-height: 300px;">
+                    <img class="position-relative w-100" src="{% static 'img/carousel-1.jpg' %}" style="min-height: 300px; object-fit: cover;">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-md-3">IF YOU HAVE ANY COMPLAINT THEN </h5>
+                            <h1 class="display-3 text-white mb-md-4">COMPLAINT THROUGH SGRS</h1>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;"></h5>
+                        <h1>About Us</h1>
+                    </div>
+                    <p align="justify">Students would be able to complaint to authorities about their concerns. There would be different types of complaints accordingly they can place their complaint. Authorities will be able to see their complaints and if it is resolved then they should give an acknowledgement message to the student. In the authority itself their exist a hierarchy,  where if the authority figure think the particular complaint needs attention from a higher authority then they will forward it to them.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    
+{% endblock %}
+{% include 'footer.html'%}  

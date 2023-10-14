@@ -1,0 +1,30 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+<div align="center">
+<br><br>
+<center><h1>View Acknowledgement</h1></center>
+<hr>
+<br><br>
+    <form method="POST" action="">
+        {% csrf_token %}
+<table border="2" width="50%">
+    <h1>  </h1>
+    <tr height="70px;">
+        <td>Complaint</td>
+        <td>Acknowledgement</td>
+        <td>Date</td>
+    </tr>
+{% for i in result %}
+    <tr>
+        <td>{{i.cid}}</td>
+        <td>{{i.ack}}</td>
+		<td>{{i.date}}</td>
+
+        </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
+{% include 'footer.html' %}

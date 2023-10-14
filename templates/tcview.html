@@ -1,0 +1,37 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+
+<div align="center">
+<br><br>
+<center><h1>View Complaint</h1></center>
+<hr>
+<br><br>
+    <form method="POST" action="">
+        {% csrf_token %}
+<table border="2" width="50%">
+    <h1>  </h1>
+    <tr height="70px;">
+        <th>student</th>
+        <th>Complaint</th>
+		<th>Acknowledgement</th>
+
+		<th>Assign HOD</th>
+		 <th>Assign Principal</th>
+
+    </tr>
+{% for i in result %}
+    <tr>
+        <td>{{i.uid}}</td>
+        <td>{{i.complaint}}</td>
+        <td><a href="{% url 'tcapproved' id=i.id %}">Acknowledgement</a></td>
+        <td><a href="{% url 'hassign' id=i.id %}">Assign</a></td>
+		<td><a href="{% url 'tassign' id=i.id %}">Assign</a></td>
+
+        </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
+{% include 'footer.html' %}
